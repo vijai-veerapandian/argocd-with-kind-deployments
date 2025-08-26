@@ -5,6 +5,9 @@ metadata:
   # This name will appear in the Argo CD UI
   name: my-test-app
   namespace: argocd
+  # Best practice: Add a finalizer to ensure resources are deleted before the app is.
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
@@ -18,9 +21,12 @@ spec:
   destination:
     server: "https://kubernetes.default.svc" # Deploys to the same cluster
 
-    # Your deployment will be created in the 'default' namespace
-    namespace: default
+    # Best practice: Deploy applications into their own dedicated namespace.
+    namespace: test-app
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    # Best practice: Automatically create the namespace if it doesn't exist.
+    syncOptions:
+      - CreateNamespace=true
