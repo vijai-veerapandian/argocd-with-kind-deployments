@@ -1,10 +1,12 @@
-# argocd-with-kind-deployments
+#### argocd-with-kind-deployments
 This is an minimalist approach towards achieving all types of deployment using argocd on kind cluster. 
+
 ```
 ➜  argocd-with-kind-deployments git:(main) kind get clusters
 No kind clusters found.
 ➜  argocd-with-kind-deployments git:(main) 
 ```
+
 ```
 ➜  argocd-with-kind-deployments git:(main) kind create cluster --name argocd --config kind-config.yaml
 Creating cluster "argocd" ...
@@ -21,6 +23,7 @@ kubectl cluster-info --context kind-argocd
 
 Not sure what to do next? 😅  Check out https://kind.sigs.k8s.io/docs/user/quick-start/
 ```
+
 
 
 ```
@@ -45,6 +48,8 @@ In order to access the server UI you have the following options:
 ```
 
 After reaching the UI the first time you can login with username: admin and the random password generated during the installation. You can find the password by running:
+
+
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 
@@ -72,6 +77,7 @@ local-path-storage   local-path-provisioner-988d74bc-jstt9               1/1    
 ```
 
 and then check the services of argocd 
+
 ```
 ➜  argocd-with-kind-deployments git:(main) kubectl get svc -n argocd
 NAME                               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
@@ -83,6 +89,7 @@ argocd-server                      ClusterIP   10.96.32.50     <none>        80/
 ```
 
 By default, argocd-server is deployed in ClusterIP type. now, change that to NodePort and also make sure the TCP ports are same as initially configured ports in the kind-config yaml file. So, we can access it via Browser.
+
 
 ```
 ➜  argocd-with-kind-deployments git:(main) ✗ kubectl get svc -n argocd               
