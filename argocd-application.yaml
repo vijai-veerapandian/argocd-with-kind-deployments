@@ -9,15 +9,15 @@ spec:
   project: default
   source:
     # IMPORTANT: Change this to your repository's URL
-    repoURL: 'https://github.com/vijai-veerapandian/y.git'
+    repoURL: "https://github.com/vijai-veerapandian/argocd-with-kind-deployments.git"
 
     # This points to the folder with your deployment.yaml
     path: test-app
 
     targetRevision: HEAD
   destination:
-    server: 'https://kubernetes.default.svc' # Deploys to the same cluster
-    
+    server: "https://kubernetes.default.svc" # Deploys to the same cluster
+
     # Your deployment will be created in the 'default' namespace
     namespace: default
   syncPolicy:

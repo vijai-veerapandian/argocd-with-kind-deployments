@@ -3,6 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-test-app
+  labels:
+    app: my-test-app
 spec:
   replicas: 2
   selector:
@@ -15,4 +17,31 @@ spec:
     spec:
       containers:
         - name: test-app
-          image: kennethreitz/httpbin # A simple HTTP testing service
+          # Best practice: Use a specific image tag and the official successor image.
+          image: docker.io/httpbin/httpbin:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          # Probes are essential for Kubernetes to manage your application's health.
+          livenessProbe:
+            httpGet:
+              path: /status/200
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /status/200
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          # Resource requests and limits are crucial for scheduling and stability.
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
