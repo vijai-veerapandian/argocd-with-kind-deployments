@@ -5,16 +5,11 @@ metadata:
   # This name will appear in the Argo CD UI
   name: my-test-app
   namespace: argocd
-  # Best practice: Add a finalizer to ensure resources are deleted before the app is.
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     # IMPORTANT: Change this to your repository's URL
     repoURL: "https://github.com/vijai-veerapandian/argocd-with-kind-deployments.git"
-
-    # This points to the folder with your deployment.yaml
     path: test-app
 
     targetRevision: HEAD
