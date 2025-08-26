@@ -18,7 +18,7 @@ spec:
       containers:
         - name: test-app
           # Best practice: Use a specific image tag and the official successor image.
-          image: docker.io/httpbin/httpbin:latest
+          image: nginxdemo/hello:plain-text
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
