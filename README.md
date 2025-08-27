@@ -52,7 +52,8 @@ After reaching the UI the first time you can login with username: admin and the 
 
 ```
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-
+```
+```
 (You should delete the initial secret afterwards as suggested by the Getting Started Guide: https://argo-cd.readthedocs.io/en/stable/getting_started/#4-login-using-the-cli)
 ➜  argocd-with-kind-deployments git:(main) ✗ 
 ➜  argocd-with-kind-deployments git:(main) ✗ kubectl get pods -A
