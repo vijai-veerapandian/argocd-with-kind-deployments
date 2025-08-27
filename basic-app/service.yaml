@@ -1,0 +1,12 @@
+# basic-app/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-basic-app-service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: my-basic-app
