@@ -110,6 +110,9 @@ iZwdP-BfT40iGoTC
 
 Argocd UI is accessible now.
 
+![loginurl](./assets/1.jpg)
+
+
 Lets, deploy all types of ArgoCD deployment strategies one after another, the main deployment types to focus on include:
 
 1.Basic Application Deployment (Manual or Automatic Sync)
